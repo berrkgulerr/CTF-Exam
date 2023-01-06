@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/sampleExamsFragment"
+        android:icon="@drawable/ic_sample_exams"
+        android:title="Sample Exams"/>
+
+    <item android:id="@+id/homePageFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item android:id="@+id/ctfExamFragment"
+        android:icon="@drawable/ic_ctf"
+        android:title="CTF Exam"/>
+
+
+</menu>

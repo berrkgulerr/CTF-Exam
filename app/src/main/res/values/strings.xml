@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CTF Quiz</string>
+    <string name="password_rules">*Password must be at least 8 characters including a lowercase letter, an uppercase letter, a number and a special character!</string>
+    <string name="type_your_email">Type your Email</string>
+    <string name="type_your_password">Type Your Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_registered_sign_in">Already Registered, Sign In!</string>
+    <string name="retype_your_password">Retype Your Password</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account, Sign Up!</string>
+    <string name="result">Result</string>
+    <string name="hey_congratulations">Congratulations!</string>
+    <string name="finish">FINISH</string>
+    <string name="trophy_image">trophy_image</string>
+    <string name="submit">SUBMIT</string>
+    <string name="this_is_a_sample_text">This is a Sample Text</string>
+    <string name="this_is_the_item_details">This is the item details</string>
+    <string name="sample_exam_1">Sample Exam 1</string>
+    <string name="_3_5">3/5</string>
+    <string name="time_left">Time left: 0 d 0 h 0 m 0 s</string>
+    <string name="here_you_can_find_and_solve_the_sample_exams">Here you can find and solve the sample exams</string>
+    <string name="start_ctf_exam">START CTF EXAM</string>
+</resources>

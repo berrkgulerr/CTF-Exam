@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ctf_nav_graph"
+    app:startDestination="@id/homePageFragment">
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.ctfquiz.ui.fragments.HomePageFragment"
+        android:label="HomePageFragment" />
+    <fragment
+        android:id="@+id/sampleExamsFragment"
+        android:name="com.example.ctfquiz.ui.fragments.SampleExamsFragment"
+        android:label="SampleExamsFragment" />
+    <fragment
+        android:id="@+id/ctfExamFragment"
+        android:name="com.example.ctfquiz.ui.fragments.CtfExamFragment"
+        android:label="CtfExamFragment" />
+</navigation>
