@@ -145,7 +145,6 @@ class CtfExamFragment : Fragment(R.layout.nav_ctf_exam) {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Cancel the timer
         timer?.cancel()
     }
 }
