@@ -11,8 +11,8 @@ import kotlinx.android.synthetic.main.nav_home_page.*
 
 class HomePageFragment : Fragment(R.layout.nav_home_page) {
 
-    private var layoutManager : RecyclerView.LayoutManager? = null
-    private var homePageAdapter : RecyclerView.Adapter<HomePageAdapter.HomePageViewHolder>? = null
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private var homePageAdapter: RecyclerView.Adapter<HomePageAdapter.HomePageViewHolder>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

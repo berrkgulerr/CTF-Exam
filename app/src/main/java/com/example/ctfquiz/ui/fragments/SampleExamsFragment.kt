@@ -30,10 +30,10 @@ class SampleExamsFragment : Fragment(R.layout.nav_sample_exams) {
         viewModel.allSampleExams.observe(viewLifecycleOwner) {
             sampleExamAdapter.differ.submitList(it)
         }
-        sampleExamAdapter.setOnItemClickListener(object : SampleExamAdapter.OnItemClickListener{
+        sampleExamAdapter.setOnItemClickListener(object : SampleExamAdapter.OnItemClickListener {
             override fun onItemClick(sampleExam: SampleExam) {
                 val intent = Intent(context, QuizQuestionActivity::class.java)
-                intent.putExtra("examId",sampleExam.id)
+                intent.putExtra("examId", sampleExam.id)
                 startActivity(intent)
             }
         })

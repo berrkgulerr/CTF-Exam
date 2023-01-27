@@ -13,15 +13,17 @@ import kotlinx.android.synthetic.main.item_sample_exam.view.*
 class SampleExamAdapter : RecyclerView.Adapter<SampleExamAdapter.SampleExamViewHolder>() {
 
     private lateinit var mListener: OnItemClickListener
-    interface OnItemClickListener{
+
+    interface OnItemClickListener {
         fun onItemClick(sampleExam: SampleExam)
     }
-    fun setOnItemClickListener(listener: OnItemClickListener){
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
 
-    inner class SampleExamViewHolder(itemView: View, listener: OnItemClickListener):
-        RecyclerView.ViewHolder(itemView){
+    inner class SampleExamViewHolder(itemView: View, listener: OnItemClickListener) :
+        RecyclerView.ViewHolder(itemView) {
         init {
             itemView.setOnClickListener {
                 listener.onItemClick(differ.currentList[adapterPosition])
@@ -29,7 +31,7 @@ class SampleExamAdapter : RecyclerView.Adapter<SampleExamAdapter.SampleExamViewH
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<SampleExam>(){
+    private val differCallback = object : DiffUtil.ItemCallback<SampleExam>() {
         override fun areItemsTheSame(oldItem: SampleExam, newItem: SampleExam): Boolean {
             return oldItem.id == newItem.id
         }

@@ -37,7 +37,7 @@ class SignUpActivity : AppCompatActivity() {
             val pass = et_sign_up_password.text.toString()
             val confirmpass = et_sign_up_confirmPass.text.toString()
 
-            if(validateSignUp(email, pass, confirmpass)){
+            if (validateSignUp(email, pass, confirmpass)) {
                 try {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
@@ -46,37 +46,47 @@ class SignUpActivity : AppCompatActivity() {
                             myRef.child(it.result.user!!.uid).child("isSolved")
                                 .setValue(false)
                             val intent = Intent(this, SignInActivity::class.java)
-                            Toast.makeText(this, "Account created successfully",
-                                Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this, "Account created successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             startActivity(intent)
                             finish()
                         } else {
-                            Toast.makeText(this, it.exception.toString(),
-                                Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this, it.exception.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
-                }catch (e:FirebaseAuthException){
+                } catch (e: FirebaseAuthException) {
                     Toast.makeText(this, e.errorCode, Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun validateSignUp(email: String, pass: String, confirmpass : String): Boolean{
-        return when{
+    private fun validateSignUp(email: String, pass: String, confirmpass: String): Boolean {
+        return when {
             !isValidEmail(email) -> {
-                Toast.makeText(this, "Give valid email",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "Give valid email",
+                    Toast.LENGTH_SHORT
+                ).show()
                 false
             }
             !isValidPassword(pass) -> {
-                Toast.makeText(this, "Give valid password",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "Give valid password",
+                    Toast.LENGTH_SHORT
+                ).show()
                 false
             }
             !TextUtils.equals(pass, confirmpass) -> {
-                Toast.makeText(this, "Passwords are not matching",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "Passwords are not matching",
+                    Toast.LENGTH_SHORT
+                ).show()
                 false
             }
             else -> {
@@ -90,15 +100,17 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun isValidPassword(password: String): Boolean {
-        val passwordREGEX = Pattern.compile("^" +
-                "(?=.*[0-9])" +         //at least 1 digit
-                "(?=.*[a-z])" +         //at least 1 lower case letter
-                "(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[*@#$%^&+=.])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{8,}" +               //at least 8 characters
-                "$")
+        val passwordREGEX = Pattern.compile(
+            "^" +
+                    "(?=.*[0-9])" +         //at least 1 digit
+                    "(?=.*[a-z])" +         //at least 1 lower case letter
+                    "(?=.*[A-Z])" +         //at least 1 upper case letter
+                    "(?=.*[a-zA-Z])" +      //any letter
+                    "(?=.*[*@#$%^&+=.])" +    //at least 1 special character
+                    "(?=\\S+$)" +           //no white spaces
+                    ".{8,}" +               //at least 8 characters
+                    "$"
+        )
         return passwordREGEX.matcher(password).matches()
     }
 }

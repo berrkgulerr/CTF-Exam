@@ -15,19 +15,29 @@ class RootDetection {
             false
         }
     }
+
     private fun isRootManagementAppInstalled(context: Context): Boolean {
-        val packageNames = listOf("eu.chainfire.supersu", "com.noshufou.android.su", "com.koushikdutta.superuser", "com.thirdparty.superuser", "com.yellowes.su")
+        val packageNames = listOf(
+            "eu.chainfire.supersu", "com.noshufou.android.su",
+            "com.koushikdutta.superuser", "com.thirdparty.superuser", "com.yellowes.su"
+        )
         return packageNames.any { isPackageInstalled(context, it) }
     }
+
     private fun isSUbinaryPresent(): Boolean {
-        return File("/system/bin/su").exists() || File("/system/xbin/su").exists()
+        return File("/system/bin/su").exists() ||
+                File("/system/xbin/su").exists()
     }
+
     private fun isBusyboxInstalled(): Boolean {
-        return File("/system/bin/busybox").exists() || File("/system/xbin/busybox").exists()
+        return File("/system/bin/busybox").exists() ||
+                File("/system/xbin/busybox").exists()
     }
+
     private fun isSystemRW(): Boolean {
         return File("/system/bin/rw-system").exists()
     }
+
     private fun isSUInPath(): Boolean {
         var process: Process? = null
         return try {
@@ -40,14 +50,17 @@ class RootDetection {
             process?.destroy()
         }
     }
+
     private fun isRootedWithRootBeer(context: Context): Boolean {
         val rootBeer = RootBeer(context)
         return rootBeer.isRooted
     }
+
     private fun isSuperuserAPKInstalled(): Boolean {
         val file = File("/system/app/Superuser.apk")
         return file.exists()
     }
+
     private fun isBuildPropValueExist(context: Context): Boolean {
         return try {
             val buildProp = Properties()
@@ -58,6 +71,7 @@ class RootDetection {
             false
         }
     }
+
     private fun isRootedWithMagisk(): Boolean {
         return File("/sbin/magisk").exists() || File("/magisk").exists() ||
                 File("/sbin/.core/img/.magisk").exists()

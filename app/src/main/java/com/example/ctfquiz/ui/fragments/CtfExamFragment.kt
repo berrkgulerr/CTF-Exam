@@ -28,7 +28,7 @@ class CtfExamFragment : Fragment(R.layout.nav_ctf_exam) {
     private var timer: Timer? = null
     private var updateCounter: Runnable? = null
     private var isSolved: Boolean = false
-    private var curUserID : String = ""
+    private var curUserID: String = ""
 
     private lateinit var database: FirebaseDatabase
     private lateinit var ctfExamDateTimeRef: DatabaseReference
@@ -69,11 +69,13 @@ class CtfExamFragment : Fragment(R.layout.nav_ctf_exam) {
                     tv_ctf_exam_will_start.visibility = View.GONE
                     btn_start_ctf_exam.visibility = View.VISIBLE
                     btn_start_ctf_exam.setOnClickListener {
-                        if (isSolved){
-                            Toast.makeText(context, "You have already solved this exam. " +
-                                    "Results will be announced on 30th January!",
-                                Toast.LENGTH_LONG).show()
-                        }else{
+                        if (isSolved) {
+                            Toast.makeText(
+                                context, "You have already solved this exam. " +
+                                        "Results will be announced on 30th January!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else {
                             isSolved = true
                             isSolvedRef.setValue(true)
                             val intent = Intent(context, CtfExamActivity::class.java)
@@ -104,11 +106,13 @@ class CtfExamFragment : Fragment(R.layout.nav_ctf_exam) {
                                 tv_ctf_exam_will_start.visibility = View.GONE
                                 btn_start_ctf_exam.visibility = View.VISIBLE
                                 btn_start_ctf_exam.setOnClickListener {
-                                    if (isSolved){
-                                        Toast.makeText(context, "You have already solved " +
-                                                "this exam. Results will be announced on 30th " +
-                                                "January!", Toast.LENGTH_LONG).show()
-                                    }else{
+                                    if (isSolved) {
+                                        Toast.makeText(
+                                            context, "You have already solved " +
+                                                    "this exam. Results will be announced on 30th " +
+                                                    "January!", Toast.LENGTH_LONG
+                                        ).show()
+                                    } else {
                                         isSolved = true
                                         isSolvedRef.setValue(true)
                                         val intent = Intent(context, CtfExamActivity::class.java)

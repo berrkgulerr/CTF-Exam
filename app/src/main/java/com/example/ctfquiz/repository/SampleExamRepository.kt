@@ -6,12 +6,13 @@ import com.google.firebase.database.*
 
 class SampleExamRepository {
 
-    private val databaseReference : DatabaseReference =
+    private val databaseReference: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("sampleExams")
-    @Volatile private var sampleExamRepositoryInstance : SampleExamRepository ?= null
+    @Volatile
+    private var sampleExamRepositoryInstance: SampleExamRepository? = null
 
-    fun getInstance() : SampleExamRepository{
-        return sampleExamRepositoryInstance ?: synchronized(this){
+    fun getInstance(): SampleExamRepository {
+        return sampleExamRepositoryInstance ?: synchronized(this) {
 
             val instance = SampleExamRepository()
             sampleExamRepositoryInstance = instance
@@ -19,16 +20,17 @@ class SampleExamRepository {
         }
     }
 
-    fun loadSampleExams(SampleExamList : MutableLiveData<List<SampleExam>>){
+    fun loadSampleExams(SampleExamList: MutableLiveData<List<SampleExam>>) {
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
-                    val sExamList : List<SampleExam> = snapshot.children.map {dataSnapshot ->
+                    val sExamList: List<SampleExam> = snapshot.children.map { dataSnapshot ->
                         dataSnapshot.getValue(SampleExam::class.java)!!
                     }
                     SampleExamList.postValue(sExamList)
 
-                }catch (_: Exception){ }
+                } catch (_: Exception) {
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

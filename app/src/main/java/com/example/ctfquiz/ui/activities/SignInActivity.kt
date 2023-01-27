@@ -20,11 +20,15 @@ class SignInActivity : AppCompatActivity() {
 
         val rootDetection = RootDetection()
         if (rootDetection.isDeviceRooted(this)) {
-            Toast.makeText(this, "You are rooted",
-                Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(this, "You are not rooted",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this, "You are rooted",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            Toast.makeText(
+                this, "You are not rooted",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         firebaseAuth = FirebaseAuth.getInstance()
@@ -44,8 +48,10 @@ class SignInActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Give valid username and password",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this, "Give valid username and password",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
