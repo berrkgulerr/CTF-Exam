@@ -1,11 +1,13 @@
 package com.example.ctfquiz.ui.activities
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ctfquiz.Constants
 import com.example.ctfquiz.R
+import com.example.ctfquiz.RootDetection
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -16,6 +18,14 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
+        val rootDetection = RootDetection()
+        if (rootDetection.isDeviceRooted(this)) {
+            Toast.makeText(this, "You are rooted",
+                Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "You are not rooted",
+                Toast.LENGTH_SHORT).show()
+        }
 
         firebaseAuth = FirebaseAuth.getInstance()
         tv_dont_have_acc.setOnClickListener {
@@ -41,5 +51,6 @@ class SignInActivity : AppCompatActivity() {
         }
 
     }
+
 
 }
