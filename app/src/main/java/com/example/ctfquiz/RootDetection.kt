@@ -91,11 +91,21 @@ class RootDetection {
                 File("/system/xbin/kinguser").exists()
     }
 
+    private fun isCustomRecoveryInstalled(): Boolean {
+        val file = File("/system/etc/install-recovery.sh")
+        return file.exists() && !file.readText().contains("/system/bin/sh")
+    }
+
+    private fun isCustomBootImageInstalled(): Boolean {
+        return File("/system/bin/bootimg.tar").exists() || File("/system/bin/boot.img").exists()
+    }
+
     fun isDeviceRooted(context: Context): Boolean {
         return isRootManagementAppInstalled(context) || isSUbinaryPresent() ||
                 isBusyboxInstalled() || isSystemRW() || isSUInPath() ||
                 isRootedWithRootBeer(context) || isSuperuserAPKInstalled() ||
                 isBuildPropValueExist(context) || isRootedWithMagisk() ||
-                isRootedWithSuperSU() || isRootedWithChainfireSU() || isRootedWithKingRoot()
+                isRootedWithSuperSU() || isRootedWithChainfireSU() || isRootedWithKingRoot() ||
+                isCustomRecoveryInstalled() || isCustomBootImageInstalled()
     }
 }
