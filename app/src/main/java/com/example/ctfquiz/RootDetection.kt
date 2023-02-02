@@ -101,11 +101,12 @@ class RootDetection {
     }
 
     fun isDeviceRooted(context: Context): Boolean {
+        val frida = FridaDetection
         return isRootManagementAppInstalled(context) || isSUbinaryPresent() ||
                 isBusyboxInstalled() || isSystemRW() || isSUInPath() ||
                 isRootedWithRootBeer(context) || isSuperuserAPKInstalled() ||
                 isBuildPropValueExist(context) || isRootedWithMagisk() ||
                 isRootedWithSuperSU() || isRootedWithChainfireSU() || isRootedWithKingRoot() ||
-                isCustomRecoveryInstalled() || isCustomBootImageInstalled()
+                isCustomRecoveryInstalled() || isCustomBootImageInstalled() || frida.detectFrida()
     }
 }
