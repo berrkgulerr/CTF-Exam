@@ -47,7 +47,8 @@ class CtfExamFragment : Fragment(R.layout.nav_ctf_exam) {
         curUserID = firebaseAuth.currentUser!!.uid
         isSolvedRef = database.getReference("/users/${curUserID}/isSolved")
         isSolvedRef.get().addOnSuccessListener {
-            isSolved = it.value as Boolean
+            isSolved = if(it.value == null) false
+            else it.value as Boolean
         }
     }
 
